@@ -16,12 +16,11 @@ io.on('connect', (socket) => {
     socket.on('join', ({ name, room }, callback) => {
         const { user, error } = addUser({ id: socket.id, name, room });
         if(error) return callback(error);
-
         socket.join(room);
         socket.emit("message", { user: 'admin', text: `${user.name} welcome to room ${user.room}` });
-        socket.broadcast.to(user.room).emit("message", { user: 'admin', text: `${user.name} has joined!` });
-        io.to(user.room).emit("roomData", { room: user.room, users: getUsersInRoom(user.room) });
-        callback();
+        // socket.broadcast.to(user.room).emit("message", { user: 'admin', text: `${user.name} has joined!` });
+        // io.to(user.room).emit("roomData", { room: user.room, users: getUsersInRoom(user.room) });
+        // callback();
     })
 
     socket.on('sendMessage', () => {
@@ -39,4 +38,4 @@ io.on('connect', (socket) => {
     })
 })
 
-httpServer.listen(process.env.PORT || 3000, () => console.log(`Server has started.`));
+httpServer.listen(process.env.PORT || 4000, () => console.log(`Server has started.`));
