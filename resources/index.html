@@ -7,11 +7,23 @@
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
     <title>Document</title>
     <script>
+        // const socket = io();
+        // socket.on('new-client', (data) => {
+        //     document.body.innerHTML = '';
+        //     document.write(data.description);
+        // })
+
+        // const socket = io('/my-nsp');
+        // socket.on('hi', (data) => {
+        //     document.body.innerHTML = '';
+        //     document.write(data);
+        // })
+
         const socket = io();
-        socket.on('new-client', (data) => {
+        socket.on('connectToRoom',function(data) {
             document.body.innerHTML = '';
-            document.write(data.description);
-        })
+            document.write(data);
+        });
     </script>
 </head>
 <body>Hello world</body>
